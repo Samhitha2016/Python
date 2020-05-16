@@ -1,0 +1,20 @@
+import collections
+
+def Clonetree(root):
+  if not root:
+    return None
+    
+  root2 = TreeNode(root.val)
+  q = collections.deque(root, root2)
+  while len(q)!=0:
+    newnode = len(q)
+    for _ in range(newnode):
+        node, node2 = q.popleft()
+        if node.left:
+            node2.left=TreeNode(node2.lef.val)
+            q.append(node.left, node2.left)
+        if node.right:
+            node2.right = TreeNode(node2.right.val)
+            q.append(node.right, node2.right.val)
+  return root2
+          
